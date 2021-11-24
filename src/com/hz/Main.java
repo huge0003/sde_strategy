@@ -1,5 +1,7 @@
 package com.hz;
 
+import discounts.Discount;
+import discounts.DiscountFactory;
 import products.BlenderWithIntegratedRadio;
 import products.CuteTeddyBear;
 import products.TVScreen;
@@ -10,7 +12,10 @@ public class Main {
     public static void main(String[] args) {
 
         // There is a shop with a checkout
-        Checkout kassa5 = new Checkout(SalesAction.ChristmasEve);
+        Checkout kassa5 = new Checkout();
+
+        Discount discount = DiscountFactory.getDiscountSale(SalesAction.ChristmasEve);
+        kassa5.setDiscount(discount);
 
         // Two customers enter the shop
         Customer piet = new Customer(CustomerType.Regular, "Piet");
